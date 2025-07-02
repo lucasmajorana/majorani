@@ -8,7 +8,7 @@ const Footer = () => {
         <Row>
           <Col xs={12} md={6}>
             <h5>Majorani</h5>
-            <p>Dirección: Calle Ficticia 123, Ciudad, País</p>
+            <p>Dirección: San Fernando, el mejor pais.</p>
           </Col>
           <Col xs={12} md={6} className="text-md-end">
             <h5>Contacto</h5>
@@ -17,7 +17,7 @@ const Footer = () => {
             <div>
               <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white me-3">Facebook</a>
               <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white me-3">Instagram</a>
-              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white">Twitter</a>
+              <a href="https://www.otrared.com" target="_blank" rel="noopener noreferrer" className="text-white">OtroSitio</a>
             </div>
           </Col>
         </Row>

@@ -1,8 +1,7 @@
-// App.jsx
 import React from 'react';
 import Header from './components/Header';
 import Products from './components/Products';
-import News from './components/News';  // Importar la nueva sección de novedades
+import News from './components/News';
 import Footer from './components/Footer';
 import ContactForm from './components/ContactForm';
 import './index.css';
@@ -13,7 +12,7 @@ const App = () => {
     <div>
       <Header />
       <Products />
-      <News />  {/* Incluir la sección de novedades aquí */}
+      <News />
       <ContactForm />
       <Footer />
     </div>
