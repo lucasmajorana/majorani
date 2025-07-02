@@ -1,182 +1,183 @@
-/* Barra de navegación */
+/* === RESET BÁSICO === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #212529;
+}
+
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* === NAVBAR === */
 .navbar {
-  background-color: #343a40; /* Color oscuro */
-  padding: 1rem;
+  background-color: #212529;
+  padding: 0.8rem 1rem;
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
+  color: #ffc107 !important;
 }
 
 .navbar-nav .nav-link {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
+  color: #fff !important;
+  margin-left: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: #495057;
+  background-color: #ffc107;
+  color: #212529 !important;
   border-radius: 5px;
-  color: #fff;
+  padding: 0.3rem 0.6rem;
 }
 
-/* Responsividad: Ajustamos para móviles */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 1rem 0;
-  }
+/* === PRODUCTOS === */
+#productos {
+  padding: 4rem 0;
+}
 
+#productos h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#productos .card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#productos .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+#productos .card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+#productos .card-text {
+  color: #555;
+}
+
+/* === NOVEDADES === */
+#novedades {
+  padding: 4rem 0;
+}
+
+#novedades h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#novedades .card {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+#novedades .card:hover {
+  transform: translateY(-5px);
+}
+
+/* === CONTACTO === */
+#contacto {
+  padding: 4rem 0;
+}
+
+#contacto h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#contacto form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#contacto button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#contacto button[type="submit"]:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #212529;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+footer h5 {
+  color: #ffc107;
+}
+
+footer a {
+  color: white;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffc107;
+}
+
+/* === RESPONSIVIDAD === */
+@media (max-width: 768px) {
   .navbar-nav {
     text-align: center;
   }
 
   .navbar-nav .nav-link {
-    font-size: 1.2rem;
-  }
-}
-
-/* Estilos para la sección de productos */
-.container#productos {
-  margin-top: 3rem;
-}
-
-.card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.card-body {
-  text-align: center;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #555;
-}
-
-.card-footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
-}
-
-@media (max-width: 768px) {
-  .card-title {
-    font-size: 1.3rem;
+    display: block;
+    margin: 0.5rem 0;
   }
 
-  .card-text {
-    font-size: 0.9rem;
+  h2 {
+    font-size: 1.5rem;
   }
 
-  .card-footer {
-    font-size: 0.9rem;
-  }
-}
-
-/* Estilos para el formulario */
-.form-control {
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease;
-}
-
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-button[type='submit'] {
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-  padding: 10px 20px;
-  border: none;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-button[type='submit']:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-  .form-control {
-    font-size: 1rem;
+  #productos .card,
+  #novedades .card {
+    margin-bottom: 1.5rem;
   }
 
-  button[type='submit'] {
-    font-size: 1rem;
-    width: 100%;
-  }
-}
-
-/* Hacer que las imágenes sean responsivas */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Estilos para el footer */
-footer {
-  background-color: #343a40;
-  color: white;
-  padding: 2rem 0;
-}
-
-footer h5 {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-footer p {
-  font-size: 1rem;
-}
-
-footer a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: #007bff;
-}
-
-@media (max-width: 768px) {
   footer {
     text-align: center;
-  }
-
-  footer h5 {
-    font-size: 1.1rem;
-  }
-
-  footer p {
-    font-size: 0.9rem;
-  }
-
-  footer a {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .some-class {
-    display: none;
   }
 }

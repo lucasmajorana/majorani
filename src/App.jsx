@@ -5,6 +5,8 @@ import Products from './components/Products';
 import News from './components/News';  // Importar la nueva sección de novedades
 import Footer from './components/Footer';
 import ContactForm from './components/ContactForm';
+import './index.css';
+
 
 const App = () => {
   return (
