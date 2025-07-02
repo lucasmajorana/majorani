@@ -5,9 +5,9 @@ const Products = () => {
   const [search, setSearch] = useState('');
 
   const products = [
-    { id: 1, name: "Producto 1", description: "Descripción 1", price: "$10" },
-    { id: 2, name: "Producto 2", description: "Descripción 2", price: "$15" },
-    { id: 3, name: "Producto 3", description: "Descripción 3", price: "$20" },
+    { id: 1, name: "Majorani trucks ED1", description: "Trucks compatibles con planchas de patin artistico adaptando suspensiones inferiores a 25mm de altura.", price: "U$100" },
+    { id: 2, name: "Majorani trucks ED2", description: "Trucks compatibles con planchas Sunlite, Magic, Brunny, entre otras, sin necesidad de adaptar suspenciones.", price: "U$120" },
+    { id: 3, name: "Majorani hats", description: "Gorros fabricados a mano en colaboracion con SecretSpot, calse unico, regulable por correa.", price: "$25.000" },
   ];
 
   const handleSearchChange = (e) => {
