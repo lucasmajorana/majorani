@@ -125,7 +125,7 @@ export default function App() {
       <Section
         id="proyecto"
         title="Proyecto Majorani"
-        media={<img src="/images/fabrica.jpg" alt="Fábrica" decoding="async" loading="lazy" />}
+        media={<img src="public\images\IMG_5400.jpeg" alt="Fábrica" decoding="async" loading="lazy" />}
       >
         <p>
           Para nosotros, el quad skate crece cuando lo hacemos juntos. Por eso, Majorani no es solamente una marca: es un
