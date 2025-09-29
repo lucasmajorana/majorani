@@ -66,3 +66,38 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* =========================================================
+   Hero banner 1920×600 (video /images/Banner1.mp4)
+   - Aplica cuando el Hero tiene la clase .hero--banner
+   - No toca otros estilos de la app
+   ========================================================= */
+
+:root{
+  --hero-h-mobile: 64vh;   /* alto en móvil */
+  --hero-h-desktop: 600px; /* alto fijo en desktop */
+}
+
+/* Modo banner: no pantalla completa */
+.hero.hero--banner{
+  height: var(--hero-h-mobile);
+}
+
+@media (min-width: 1000px){
+  .hero.hero--banner{
+    height: var(--hero-h-desktop);
+  }
+}
+
+/* El video debe cubrir el contenedor del hero */
+.hero__video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Baja un poco el bloque de marca/texto en el banner */
+.hero--banner .hero__brand{
+  inset: auto 0 32px;
+}

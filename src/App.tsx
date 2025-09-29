@@ -391,13 +391,45 @@ export default function App() {
         .overlay__link.is-active{ background:#fff; color:#111 }
 
         /* HERO */
-        .hero{ position:relative; height:100vh; overflow:hidden; scroll-margin-top:calc(var(--nav-h) + 12px) }
-        @supports(height:100svh){ .hero{ height:100svh } }
-        .hero__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
-        .hero__overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.85)) }
-        .hero__brand{ position:absolute; inset:auto 0 12%; display:grid; place-items:center; gap:12px; color:#fff; text-align:center }
+        .hero{
+          position:relative;
+          /* Banner responsivo: entre 360px y 600px; ~37vw para pantallas medias */
+          height:clamp(360px, 37vw, 600px);
+          overflow:hidden;
+          scroll-margin-top:calc(var(--nav-h) + 12px);
+        }
+        /* si querés forzar 600px fijos en desktop grande, descomenta este media:
+        @media (min-width: 1200px){ .hero{ height:600px } }
+        */
+
+        .hero__video{
+          position:absolute;
+          inset:0;
+          width:100%;
+          height:100%;
+          object-fit:cover;    /* recorta para llenar sin deformar */
+        }
+
+        .hero__overlay{
+          position:absolute;
+          inset:0;
+          background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.85));
+        }
+
+        /* Levanto un poco el bloque de marca para que quede por encima del borde inferior */
+        .hero__brand{
+          position:absolute;
+          inset:auto 0 24px;
+          display:grid;
+          place-items:center;
+          gap:12px;
+          color:#fff;
+          text-align:center;
+        }
+
         .hero__brand img{ width:min(220px,48vw) }
         .hero__cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+
 
         /* BUTTONS */
         .btn{ display:inline-block; padding:12px 16px; border-radius:12px; text-decoration:none; font-weight:600; transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease, color var(--motion-fast) ease; will-change: transform }
