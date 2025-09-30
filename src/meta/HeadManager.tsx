@@ -54,7 +54,12 @@ export function HeadManager() {
     upsertLink("manifest", { rel: "manifest", href: "/manifest.webmanifest" });
 
     // Opcional: preloads si existen
-    upsertLink("preload-hero", { rel: "preload", href: "/images/hero.mp4", as: "video", crossOrigin: "anonymous" });
+    upsertLink('preload-hero', {
+      rel: 'preload',
+      href: '/images/Banner1.mp4',
+      as: 'video',
+      crossOrigin: 'anonymous'
+    });
     upsertLink("preload-trucks", { rel: "preload", href: "/images/trucks.jpg", as: "image", fetchpriority: "high" });
   }, []);
 

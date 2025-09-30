@@ -67,37 +67,33 @@ button:focus-visible {
   }
 }
 
-/* =========================================================
-   Hero banner 1920×600 (video /images/Banner1.mp4)
-   - Aplica cuando el Hero tiene la clase .hero--banner
-   - No toca otros estilos de la app
-   ========================================================= */
-
+/* === Banner 1920x600 (cropping) === */
 :root{
-  --hero-h-mobile: 64vh;   /* alto en móvil */
-  --hero-h-desktop: 600px; /* alto fijo en desktop */
+  --hero-h-mobile: 360px;   /* lo que prefieras en móvil */
+  --hero-h-desktop: 600px;  /* altura objetivo en desktop */
 }
 
-/* Modo banner: no pantalla completa */
-.hero.hero--banner{
-  height: var(--hero-h-mobile);
+/* Forzamos altura de banda y recorte */
+.hero{
+  height: clamp(var(--hero-h-mobile), 55vh, var(--hero-h-desktop));
+  /* si preferís EXACTAMENTE 600px en desktop: lo fijamos más abajo */
+  overflow: hidden;
 }
 
-@media (min-width: 1000px){
-  .hero.hero--banner{
-    height: var(--hero-h-desktop);
-  }
-}
-
-/* El video debe cubrir el contenedor del hero */
+/* Mantener proporción del archivo y recortar lo que sobre */
 .hero__video{
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover;          /* recorta sin deformar */
+  aspect-ratio: 1920 / 600;   /* reserva layout, menos CLS */
 }
 
-/* Baja un poco el bloque de marca/texto en el banner */
-.hero--banner .hero__brand{
-  inset: auto 0 32px;
+/* Colocación de la marca/CTA dentro de la banda */
+.hero__brand{
+  bottom: 18px;               /* ajustá a gusto */
+}
+
+/* En desktop grande, exactamente 600px de alto */
+@media (min-width: 1200px){
+  .hero{ height: 600px; }
 }
