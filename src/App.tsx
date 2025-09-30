@@ -297,7 +297,7 @@ export default function App() {
           <Accordion
             items={[
               { q: "¿Venden directo al público?", a: "Trabajamos exclusivamente con quad-skate shops autorizadas." },
-              { q: "¿Con qué plates es compatible?", a: "Compatibles con configuraciones de 10° (consulta tu shop para placas específicas)." },
+              { q: "¿Con qué planchas es compatible?", a: "Compatibles con configuraciones de 10° (consulta tu shop para placas específicas)." },
               { q: "¿Cuándo salen a la venta?", a: "El lanzamiento está previsto para Octubre 2025." },
             ]}
           />
