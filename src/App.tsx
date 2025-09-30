@@ -154,7 +154,7 @@ export default function App() {
       <Section
         id="trucks"
         title="Trucks"
-        media={<img src="/images/trucks.jpg" alt="Trucks" decoding="async" loading="lazy" />}
+        media={<img src="public/images/image11.jpeg" alt="Trucks" decoding="async" loading="lazy" />}
       >
         <div className="truck-layout no-aside">
           <div className="truck-body">
@@ -214,15 +214,15 @@ export default function App() {
       <Section
         id="especificaciones"
         title="Especificaciones"
-        media={<img src="/images/specs.jpg" alt="Especificaciones" decoding="async" loading="lazy" />}
+        media={<img src="public/images/IMG_9484.jpg" alt="Especificaciones" decoding="async" loading="lazy" />}
       >
         <Specs
           items={[
-            { k: "Compatibilidad", v: "Planchas 10° (Sunlite, Magic, Brunny) y artístico con ajuste a 25 mm" },
-            { k: "Geometría", v: "Fast-Grind con groove central" },
-            { k: "Material", v: "Inyección de aluminio puro en lingotes (ISO 9001)" },
-            { k: "Estabilidad", v: "Transversal mejorada y deslizamiento controlado" },
-            { k: "Fabricación", v: "Producción local con control de calidad" },
+            { k: "Compatibilidad", v: "Planchas 10° / Sunlite - Magic - Brunny - Royal - TMG - Roll Line - Majorani" },
+            { k: "Tecnología", v: " Geometría Fast-Grind con Groove central" },
+            { k: "Material", v: "Inyección de aluminio" },
+            { k: "Ejes", v: "Acero trefilado 1045" },
+            { k: "Fabricación", v: "Producción Nacional - ISO 9001" },
           ]}
         />
       </Section>
@@ -231,18 +231,21 @@ export default function App() {
       <Section
         id="kingpin"
         title="Kingpin Set"
-        media={<img src="/images/kingpin.jpg" alt="Kingpin Set" decoding="async" loading="lazy" />}
+        media={<img src="public/images/IMG_1120.jpeg" alt="Kingpin Set" decoding="async" loading="lazy" />}
       >
         <p className="lead">
-          Adaptá trucks de quad skate a planchas de artístico de 10° con un set robusto y fácil de instalar.
+          Adaptá trucks de QuadSkate nacionales o importados a planchas de artístico de 10° con un kingpin robusto y fácil de instalar.
+        </p>
+        <p>
+          Este producto exclusivo de Industria Majorani logra solucionar eficazmente el problema al adaptar trucks anchos a planchas de artistico convencionales en Argentina. <br/>
+          Gracias a este diseño de "perfil bajo", podras deslizar cómodamente sin estropear tus tuercas y kingpins.
         </p>
         <FeatureList
           features={[
-            "Incluye tornillo kingpin, tuerca y arandela de seguridad",
-            "Compatibilidad: plates de artístico con 10°",
-            "Optimizado para set-up con Majorani Trucks",
-            "Instalación simple con guía paso a paso (PDF)",
-            "Fabricación local",
+            "Incluye tornillo kingpin, arandela y tuerca de seguridad",
+            "Compatibilidad: ROLL LINE, ROYAL, MAJORANI",
+            "Material: Acero trefilado 1045",
+            "Producción: Industria Argentina"
           ]}
         />
         <p>
@@ -260,17 +263,17 @@ export default function App() {
       </Section>
 
       {/* Gorros */}
-      <Section id="gorros" title="Gorros" media={<img src="/images/hats.jpg" alt="Gorros Majorani" decoding="async" loading="lazy" />}>
+      <Section id="gorros" title="Gorros" media={<img src="public/images/julisombrerito-05.png" alt="Gorros Majorani" decoding="async" loading="lazy" />}>
         <p className="lead">
-          Ediciones limitadas con identidad Majorani. Fabricación local, materiales de calidad y terminaciones prolijas.
+          Ediciones limitadas con identidad Majorani. <br/>
+          Fabricación local, materiales de calidad y terminaciones prolijas.
         </p>
         <FeatureList
           features={[
             "Tejido cómodo y respirable",
-            "Unisex, talle único (fit elástico)",
-            "Etiquetas tejidas/estampadas de marca",
-            "Colores base: negro y combinaciones de temporada",
+            "Unisex, talle único",
             "Producción local en tandas limitadas",
+            "Colaboración con Secret Spot Tienda"
           ]}
         />
         <p>

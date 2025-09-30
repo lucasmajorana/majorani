@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { useReducedMotion } from "framer-motion";
 import type { SectionId } from "../types";
+import { useReducedMotion } from "framer-motion";
 
 type Props = { onCta: (id: SectionId) => void };
 
@@ -14,11 +14,10 @@ export function Hero({ onCta }: Props) {
     }
   }, [prefersReduced]);
 
+  // Si el video falla (404 o códec), ocultamos el <video> y mostramos el poster
   const handleError: React.ReactEventHandler<HTMLVideoElement> = () => {
-    // Si el video falla: oculto el <video> y muestro el poster
     const v = ref.current;
     if (!v) return;
-    console.warn("[Hero] Video no pudo reproducirse (ruta o códec). Muestro poster.");
     v.style.display = "none";
     const poster = document.querySelector(".hero__poster") as HTMLImageElement | null;
     if (poster) poster.style.display = "block";
@@ -37,13 +36,13 @@ export function Hero({ onCta }: Props) {
         poster="/images/hero-poster.jpg"
         onError={handleError}
       >
-        {/* Usa tu archivo real */}
+        {/* 1ª opción: tu archivo actual */}
         <source src="/images/Banner1.mp4" type="video/mp4" />
-        {/* Si alguna vez exportás en webm, podés sumar otra fuente: */}
+        {/* Si en el futuro agregás una versión webm, déjala debajo */}
         {/* <source src="/images/Banner1.webm" type="video/webm" /> */}
       </video>
 
-      {/* Poster de respaldo cuando falle el video */}
+      {/* Poster/fallback visible si el video falla */}
       <img
         className="hero__poster"
         src="/images/hero-poster.jpg"
