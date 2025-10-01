@@ -19,7 +19,6 @@ import { DistributorForm } from "./components/DistributorForm";
 import { Footer } from "./components/Footer";
 import Accordion from "./components/Accordion";
 
-
 export default function App() {
   const sectionIds = useMemo(() => SECTIONS.map(s => s.id), []);
   const active = useActiveSection(sectionIds);
@@ -27,7 +26,7 @@ export default function App() {
   const navigateTo = (id: SectionId) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    if (history.replaceState) history.replaceState(null, "", `#${id}`);
+    if (history.replaceState) history.replaceState(null, "", `#${id}`); // update hash
   };
 
   // Deep link inicial (#hash)
@@ -62,7 +61,6 @@ export default function App() {
     log(!!document.querySelector(".badge"), "Badge de estado presente");
     log(!!document.querySelector(".product-card__actions .btn--secondary"), "Botón secundario visible");
 
-    // Layout productos en desktop
     try {
       const grid = document.querySelector(".products-grid");
       if (grid) {
@@ -125,7 +123,7 @@ export default function App() {
       <Section
         id="proyecto"
         title="Proyecto Majorani"
-        media={<img src="public\images\IMG_5400.jpeg" alt="Fábrica" decoding="async" loading="lazy" />}
+        media={<img src="/images/IMG_5400.jpeg" alt="Fábrica" decoding="async" loading="lazy" />}
       >
         <p>
           Para nosotros, el quad skate crece cuando lo hacemos juntos. Por eso, Majorani no es solamente una marca: es un
@@ -154,7 +152,7 @@ export default function App() {
       <Section
         id="trucks"
         title="Trucks"
-        media={<img src="public/images/image11.jpeg" alt="Trucks" decoding="async" loading="lazy" />}
+        media={<img src="/images/image11.jpeg" alt="Trucks" decoding="async" loading="lazy" />}
       >
         <div className="truck-layout no-aside">
           <div className="truck-body">
@@ -214,7 +212,7 @@ export default function App() {
       <Section
         id="especificaciones"
         title="Especificaciones"
-        media={<img src="public/images/IMG_9484.jpg" alt="Especificaciones" decoding="async" loading="lazy" />}
+        media={<img src="/images/IMG_9484.jpg" alt="Especificaciones" decoding="async" loading="lazy" />}
       >
         <Specs
           items={[
@@ -231,7 +229,7 @@ export default function App() {
       <Section
         id="kingpin"
         title="Kingpin Set"
-        media={<img src="public/images/IMG_1120.jpeg" alt="Kingpin Set" decoding="async" loading="lazy" />}
+        media={<img src="/images/IMG_1120.jpeg" alt="Kingpin Set" decoding="async" loading="lazy" />}
       >
         <p className="lead">
           Adaptá trucks de QuadSkate nacionales o importados a planchas de artístico de 10° con un kingpin robusto y fácil de instalar.
@@ -263,7 +261,7 @@ export default function App() {
       </Section>
 
       {/* Gorros */}
-      <Section id="gorros" title="Gorros" media={<img src="public/images/julisombrerito-05.png" alt="Gorros Majorani" decoding="async" loading="lazy" />}>
+      <Section id="gorros" title="Gorros" media={<img src="/images/julisombrerito-05.png" alt="Gorros Majorani" decoding="async" loading="lazy" />}>
         <p className="lead">
           Ediciones limitadas con identidad Majorani. <br/>
           Fabricación local, materiales de calidad y terminaciones prolijas.
@@ -293,7 +291,6 @@ export default function App() {
       {/* FAQ */}
       <Section id="faq" title="Preguntas frecuentes">
         <div className="accordion" role="region" aria-label="FAQ">
-          {/* Si querés mantener el Accordion como componente, reemplaza este bloque por <Accordion items={[...]} /> */}
           <Accordion
             items={[
               { q: "¿Venden directo al público?", a: "Trabajamos exclusivamente con quad-skate shops autorizadas." },
@@ -337,7 +334,7 @@ export default function App() {
 
       <Footer />
 
-      {/* Mantengo tus estilos inline para que todo luzca igual. Si preferís, los movemos a styles.css. */}
+      {/* Estilos (incluye HERO altura 397px) */}
       <style>{`
         :root{
           --font-head: "Clash Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
@@ -393,46 +390,40 @@ export default function App() {
         .overlay__link:hover{ background:rgba(255,255,255,.08) }
         .overlay__link.is-active{ background:#fff; color:#111 }
 
-        /* HERO */
+        /* HERO — altura fija de 397px */
         .hero{
           position:relative;
-          /* Banner responsivo: entre 360px y 600px; ~37vw para pantallas medias */
-          height:clamp(360px, 37vw, 600px);
+          height:397px;
           overflow:hidden;
-          scroll-margin-top:calc(var(--nav-h) + 12px);
+          scroll-margin-top:calc(var(--nav-h) + 12px)
         }
-        /* si querés forzar 600px fijos en desktop grande, descomenta este media:
-        @media (min-width: 1200px){ .hero{ height:600px } }
-        */
-
+        /* En móviles muy chicos, permite ceder un poco la altura */
+        @media (max-width:520px){
+          .hero{ height:clamp(300px, 62vw, 397px) }
+        }
         .hero__video{
           position:absolute;
           inset:0;
           width:100%;
           height:100%;
-          object-fit:cover;    /* recorta para llenar sin deformar */
+          object-fit:cover; /* llena el ancho y recorta sin deformar */
         }
-
         .hero__overlay{
           position:absolute;
           inset:0;
-          background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.85));
+          background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.80));
         }
-
-        /* Levanto un poco el bloque de marca para que quede por encima del borde inferior */
         .hero__brand{
           position:absolute;
-          inset:auto 0 24px;
+          left:0; right:0; bottom:18px;
           display:grid;
           place-items:center;
-          gap:12px;
+          gap:10px;
           color:#fff;
           text-align:center;
         }
-
-        .hero__brand img{ width:min(220px,48vw) }
+        .hero__brand img{ width:min(180px, 36vw) } /* logo contenido */
         .hero__cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
-
 
         /* BUTTONS */
         .btn{ display:inline-block; padding:12px 16px; border-radius:12px; text-decoration:none; font-weight:600; transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease, color var(--motion-fast) ease; will-change: transform }
@@ -470,10 +461,6 @@ export default function App() {
         .accordion__item + .accordion__item{ border-top:1px solid rgba(0,0,0,.08) }
         .accordion__btn{ width:100%; text-align:left; padding:14px 16px; font-weight:600; background:#fff; border:0; cursor:pointer }
         .accordion__panel{ padding:0 16px 16px 16px; background:#fff }
-
-        /* BULLETS */
-        .bullets{ margin:10px 0 0 18px; }
-        .bullets li{ margin:6px 0 }
 
         /* PRODUCTS */
         #productos .section__content{ padding-inline: 0 }

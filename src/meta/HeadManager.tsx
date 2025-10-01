@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 
+/**
+ * Inyecta metas y preloads en <head>.
+ * Asegurate de que el archivo exista en /public/images/Banner1.mp4
+ */
 export function HeadManager() {
   useEffect(() => {
     document.title = "Majorani — Trucks y hardware para quad skate";
@@ -24,26 +28,19 @@ export function HeadManager() {
       Object.entries(attrs).forEach(([k, v]) => el!.setAttribute(k, v));
     };
 
-    // SEO basics
+    // SEO básicos
     upsertMeta("meta-desc", {
       name: "description",
-      content:
-        "Trucks y hardware para quad skate. Producción local certificada, diseño para park y street.",
+      content: "Trucks y hardware para quad skate. Producción local certificada, diseño para park y street.",
     });
     upsertMeta("og-title", { property: "og:title", content: "Majorani — Trucks & hardware quad skate" });
-    upsertMeta("og-desc", {
-      property: "og:description",
-      content: "Trucks y hardware para quad skate. Producción local certificada.",
-    });
+    upsertMeta("og-desc", { property: "og:description", content: "Trucks y hardware para quad skate. Producción local certificada." });
     upsertMeta("og-type", { property: "og:type", content: "website" });
     upsertMeta("og-url", { property: "og:url", content: "https://majorani.com/" });
     upsertMeta("og-image", { property: "og:image", content: "/images/og.jpg" });
     upsertMeta("twitter-card", { name: "twitter:card", content: "summary_large_image" });
     upsertMeta("twitter-title", { name: "twitter:title", content: "Majorani — Trucks & hardware quad skate" });
-    upsertMeta("twitter-desc", {
-      name: "twitter:description",
-      content: "Trucks y hardware para quad skate. Producción local certificada.",
-    });
+    upsertMeta("twitter-desc", { name: "twitter:description", content: "Trucks y hardware para quad skate. Producción local certificada." });
     upsertMeta("theme-color", { name: "theme-color", content: "#0f0f10" });
 
     // Links
@@ -53,15 +50,19 @@ export function HeadManager() {
     upsertLink("apple-touch-icon", { rel: "apple-touch-icon", href: "/icons/icon-192.png" });
     upsertLink("manifest", { rel: "manifest", href: "/manifest.webmanifest" });
 
-    // Opcional: preloads si existen
-    upsertLink('preload-hero', {
-      rel: 'preload',
-      href: '/images/Banner1.mp4',
-      as: 'video',
-      crossOrigin: 'anonymous'
+    // Preload CORRECTO del video real (elimina los preloads viejos a /images/hero.mp4)
+    upsertLink("preload-hero", {
+      rel: "preload",
+      href: "/images/Banner1.mp4",
+      as: "video",
+      crossOrigin: "anonymous",
     });
+
+    // Puedes pre-cargar imágenes clave
     upsertLink("preload-trucks", { rel: "preload", href: "/images/trucks.jpg", as: "image", fetchpriority: "high" });
   }, []);
 
   return null;
 }
+
+export default HeadManager;

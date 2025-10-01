@@ -1,0 +1,83 @@
+/* HERO full-bleed y video que "entra entero" (object-fit: contain) */
+:root{
+  --nav-h: 72px;              /* ajusta si tu header cambia */
+  --hero-min-h: 300px;        /* altura mínima para móvil chico */
+  --hero-max-h: 600px;        /* límite superior opcional (puedes subirlo/bajarlo) */
+  --overlay-top: rgba(0,0,0,.15);
+  --overlay-bot: rgba(0,0,0,.55);
+}
+
+/* full-bleed: ocupa 100vw rompiendo el container */
+.hero.hero--fullbleed{
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: #000; /* letterbox color */
+  scroll-margin-top: calc(var(--nav-h) + 12px);
+}
+
+/**
+ * El marco del video controla la altura del banner.
+ * Estrategia:
+ *  - Usamos "altura fluida" con clamp:
+ *      min: --hero-min-h (móvil)
+ *      preferido: 37vw (aprox para 1920x600 -> 600/1920 ≈ 31.25%; 37vw da más presencia)
+ *      max: --hero-max-h
+ *  - Si querés altura fija de 397px, cambia el height por: height: 397px;
+ */
+.hero__frame{
+  position: relative;
+  width: 100%;
+  height: clamp(var(--hero-min-h), 37vw, var(--hero-max-h));
+  overflow: hidden;
+}
+
+/* El video SIEMPRE entra entero (contain), centrado y sin recortes */
+.hero__video,
+.hero__poster{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* contain evita recortes; agregará barras si la relación no coincide */
+  object-fit: contain;
+  object-position: center center;
+  background: #000; /* para barras */
+}
+
+/* Gradiente más suave para no “apagar” el video */
+.hero__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--overlay-top), var(--overlay-bot));
+  pointer-events: none;
+}
+
+/* Marca / CTA */
+.hero__brand{
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 24px;
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  color: #fff;
+  text-align: center;
+  padding: 0 12px;
+  z-index: 1;
+}
+
+.hero__brand img{ width: min(220px, 48vw); }
+.hero__cta{ display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+/* Ajustes responsivos opcionales */
+@media (max-width: 520px){
+  .hero__brand{ bottom: 16px }
+  .hero__brand img{ width: min(180px, 56vw); }
+}
+
+@media (min-width: 1200px){
+  /* puedes aumentar el max si querés un banner más alto en desktop */
+  :root{ --hero-max-h: 720px; }
+}

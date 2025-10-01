@@ -1,119 +1,99 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* =========
+   Reset + tokens
+   ========= */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+  color: #111;
+  background: #fff;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-/* === Hero: altura fija 397px y ancho completo === */
+/* Paleta (puedes ajustar) */
 :root{
-  /* ajusta si tu header cambia de alto */
-  --nav-h: 72px;
-  --hero-h: 397px;
+  --accent: #ff6a00;
+  --accent-contrast: #fff;
+  --ink: #111;
+  --ink-muted: #4b4b4b;
+  --bg: #fff;
+  --bg-alt: #f7f7f7;
+  --blanco-hueso: #f5f3ee;
+  --nav-h: 64px;
 }
 
-.hero.hero--banner{
+/* Botones (hereda tu estilo original) */
+.btn{
+  display:inline-block;
+  padding:12px 16px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  background:var(--accent);
+  color:var(--accent-contrast);
+}
+.btn--ghost{
+  background:transparent;
+  color:#fff;
+  outline:1.5px solid rgba(255,255,255,.7);
+}
+
+/* =========
+   HERO fijo a 397px
+   ========= */
+.hero{
   position: relative;
-  height: var(--hero-h) !important;   /* fuerza sobre reglas anteriores */
-  min-height: var(--hero-h) !important;
   overflow: hidden;
+  /* Reservamos espacio bajo el nav pegajoso si lo usas */
   scroll-margin-top: calc(var(--nav-h) + 12px);
 }
 
-.hero.hero--banner .hero__video{
+/* Altura F I J A: 397px en todos los tamaños */
+.hero--fixed{
+  height: 397px;
+}
+
+/* El video ocupa todo el ancho, mantiene el ALTO fijo y NO se recorta */
+.hero__video,
+.hero__poster{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* llena el ancho sin deformar */
+  /* IMPORTANTE: mostrar ENTERO sin recortar */
+  object-fit: contain;
+  background: #000; /* letterboxing */
 }
 
-.hero.hero--banner .hero__overlay{
+/* Overlay sutil (si te molesta, bórralo) */
+.hero__overlay{
   position: absolute;
   inset: 0;
-  /* overlay más leve para que no se vea tan opaco */
-  background: linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.55));
+  pointer-events: none;
+  /* Más clarito que antes para que no se vea opaco */
+  background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.28));
 }
 
-.hero.hero--banner .hero__brand{
+/* Contenido del hero (marca/cta) */
+.hero__brand{
   position: absolute;
-  inset: auto 0 12%;
+  left: 0; right: 0; bottom: 22px;
   display: grid;
   place-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #fff;
   text-align: center;
 }
+.hero__brand img{ width: min(220px, 48vw); }
+.hero__cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
 
-.hero.hero--banner .hero__brand img{
-  width: min(220px, 48vw);
-}
+/* =========
+   (Opcional) navegación/containers que ya tenías
+   ========= */
+.container{ width:min(1360px,92vw); margin:0 auto; }
 
-.hero.hero--banner .hero__cta{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Si usas nav pegajoso, ajusta su alto en desktop */
+@media (min-width:880px){
+  :root{ --nav-h:72px; }
 }
