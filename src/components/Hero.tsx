@@ -33,27 +33,14 @@ export function Hero({ onCta }: Props) {
         playsInline
         loop
         preload="metadata"
-        poster="/images/hero-poster.jpg"
+        poster="public\images\julisombrerito-05.png"
         onError={handleError}
       >
-        {/* 1ª opción: tu archivo actual */}
-        <source src="/images/Banner1.mp4" type="video/mp4" />
-        {/* Si en el futuro agregás una versión webm, déjala debajo */}
-        {/* <source src="/images/Banner1.webm" type="video/webm" /> */}
-      </video>
-
-      {/* Poster/fallback visible si el video falla */}
-      <img
-        className="hero__poster"
-        src="/images/hero-poster.jpg"
-        alt=""
-        style={{ display: "none", position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-      />
+    <source src="/images/Banner1.mp4" type="video/mp4" />
+  </video>
 
       <div className="hero__overlay" />
       <div className="hero__brand">
-        <img src="/images/majorani-mark.svg" alt="Majorani" />
-        <p>Hardware de calidad para quad skate</p>
         <div className="hero__cta">
           <a
             href="#productos"
