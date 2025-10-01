@@ -33,8 +33,6 @@ export function Hero({ onCta } : Props) {
       />
       <div className="hero__overlay" />
       <div className="hero__brand">
-        <img src="/images/majorani-mark.svg" alt="Majorani" />
-        <p>Hardware de calidad para quad skate</p>
         <div className="hero__cta">
           <a href="#productos" className="btn" onClick={(e)=>{e.preventDefault(); onCta("productos");}}>Ver productos</a>
           <a href="#distribuidores" className="btn btn--ghost" onClick={(e)=>{e.preventDefault(); onCta("distribuidores");}}>Ser distribuidor</a>

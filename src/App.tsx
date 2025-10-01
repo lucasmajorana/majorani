@@ -5,7 +5,7 @@ import { SECTIONS } from "./data/sections";
 import { PRODUCTS } from "./data/products";
 import { PALETTE } from "./data/constants";
 
-import { useActiveSection } from "./hooks/useActiveSection";
+import { useActiveSection } from './hooks/useActiveSection';
 import { HeadManager } from "./meta/HeadManager";
 import { SkipLink } from "./meta/SkipLink";
 
@@ -137,6 +137,7 @@ export default function App() {
           propios límites. Al mismo tiempo, nos comprometemos a impulsar la cultura del quad skate, apoyando su evolución y
           fomentando un espacio en el que la comunidad pueda crecer sin fronteras.
         </p>
+        <br></br>
         <p className="callout">
           <strong>Majorani es movimiento, innovación y unión.</strong> Este es nuestro proyecto: construir, junto a todos
           ustedes, un futuro donde el quad skate tenga cada vez más presencia, más fuerza y más libertad para expresarse.
@@ -158,34 +159,34 @@ export default function App() {
           <div className="truck-body">
             <h3>Compatibilidad</h3>
             <p>
-              Compatibles con <strong>Sunlite, Magic y Brunny</strong>. También con planchas de artístico: solo requiere
-              elevar las suspensiones inferiores a <strong>25&nbsp;mm</strong> para un funcionamiento óptimo. La premisa:{" "}
+              Compatibles con planchas de 10 grados, como por ejemplo, Sunlite, Magic y Brunny. Además son compatibles con planchas de artístico: 
+              solo requiere modificar la altura de los bujes inferiores a 25mm o adquirir un set de kingpin Majorani para un funcionamiento óptimo. <br></br>La premisa:{" "}
               <strong>adaptarse sin perder rendimiento</strong>.
             </p>
 
             <h3>Tecnología y diseño</h3>
             <p>
-              <strong>Inyección de aluminio puro en lingotes</strong> (ISO&nbsp;9001) que reduce hasta <strong>85% las
-              burbujas</strong> respecto a la fundición tradicional, ganando resistencia y consistencia. Geometría{" "}
-              <strong>Fast-Grind</strong> con groove central: <strong>más estabilidad transversal</strong> y deslizamiento
-              controlado.
+              <strong>Inyección de aluminio puro en lingotes</strong> que reduce hasta 85% las
+              burbujas de aire respecto a la fundición tradicional, ganando resistencia y consistencia. {" "}
+              <strong>Geometría Fast-Grind</strong> con groove central: <strong>más estabilidad transversal</strong> y menor rozamiento 
+              para un deslizamiento controlado.
             </p>
 
             <h3>Para todo tipo de patinadores</h3>
             <p>
-              Desde los <strong>primeros pasos</strong> hasta niveles avanzados. Mantienen la línea sin esfuerzos extra ni
-              exceso de cera, ofreciendo <strong>control y confianza</strong> en cada truco.
+              Desde los primeros pasos hasta niveles avanzados. Mantienen la línea sin requerir posturas complejas, esfuerzos innecesarios, ni
+              cantidades excesivas de cera, ofreciendo <strong>control y confianza</strong> en cada truco.
             </p>
 
             <h3>Rendimiento comprobado</h3>
             <p>
-              Probados por más de <strong>un año</strong> en pistas y eventos (p.&nbsp;ej., <em>Million Quad Fest</em>). No
+              Testeados exhaustivamente por patinadores técnicos en skateparks, street y eventos por mas de un año (Primera aparición pública en Milano Quad Fest). No
               usamos aluminio reciclado ni atajos: buscamos <strong>precisión, robustez y durabilidad</strong>.
             </p>
 
             <h3>Origen</h3>
             <p>
-              Fabricado en Argentina. Proyecto que apuesta a la industria local con visión internacional y un{" "}
+              Fabricado en Argentina. Proyecto que apuesta a la industria nacional con visión internacional y un{" "}
               <strong>nuevo estándar</strong> para el quad skate.
             </p>
 
@@ -225,27 +226,26 @@ export default function App() {
         />
       </Section>
 
-      {/* Kingpin */}
+      {/* Kingpin (oscuro) */}
       <Section
         id="kingpin"
         title="Kingpin Set"
-        media={<img src="/images/IMG_1120.jpeg" alt="Kingpin Set" decoding="async" loading="lazy" />}
+        dark
+        media={<img src="public/images/IMG_1120.jpeg" alt="Kingpin Set" decoding="async" loading="lazy" />}
       >
         <p className="lead">
-          Adaptá trucks de QuadSkate nacionales o importados a planchas de artístico de 10° con un kingpin robusto y fácil de instalar.
+          Adaptá trucks de quad skate a planchas de artístico de 10° con un set robusto y fácil de instalar.
         </p>
-        <p>
-          Este producto exclusivo de Industria Majorani logra solucionar eficazmente el problema al adaptar trucks anchos a planchas de artistico convencionales en Argentina. <br/>
-          Gracias a este diseño de "perfil bajo", podras deslizar cómodamente sin estropear tus tuercas y kingpins.
-        </p>
+
         <FeatureList
           features={[
             "Incluye tornillo kingpin, arandela y tuerca de seguridad",
-            "Compatibilidad: ROLL LINE, ROYAL, MAJORANI",
-            "Material: Acero trefilado 1045",
-            "Producción: Industria Argentina"
+            "Compatible con planchas ROYAL Y ROLL LINE",
+            "Optimizado para set-up con Trucks Majorani",
+            "Industria Argentina",
           ]}
         />
+
         <p>
           <a
             className="btn btn--secondary btn--small"
@@ -259,6 +259,7 @@ export default function App() {
           </a>
         </p>
       </Section>
+
 
       {/* Gorros */}
       <Section id="gorros" title="Gorros" media={<img src="/images/julisombrerito-05.png" alt="Gorros Majorani" decoding="async" loading="lazy" />}>
@@ -497,6 +498,12 @@ export default function App() {
         .truck-body p{ margin:0 0 12px; line-height:1.75 }
         .truck-body strong{ font-weight:700 }
         .truck-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px }
+
+        /* KINGPIN: features apilados (1 columna) */
+        #kingpin .features{
+          grid-template-columns: 1fr;   /* en vez de 2 columnas */
+        }
+
 
         /* FOOTER */
         .footer{ padding:32px 0; background:var(--bg-alt); color:#222; margin-top:48px }
