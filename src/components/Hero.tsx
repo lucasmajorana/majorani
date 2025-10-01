@@ -14,7 +14,7 @@ export function Hero({ onCta }: Props) {
     }
   }, [prefersReduced]);
 
-  // Si el video falla (404 o códec), ocultamos el <video> y mostramos el poster
+  // Si el video falla (404 o códec), ocultamos el <video> y mostramos el póster
   const handleError: React.ReactEventHandler<HTMLVideoElement> = () => {
     const v = ref.current;
     if (!v) return;
@@ -33,14 +33,24 @@ export function Hero({ onCta }: Props) {
         playsInline
         loop
         preload="metadata"
-        poster="public\images\julisombrerito-05.png"
+        poster="/images/hero-poster.jpg"
         onError={handleError}
       >
-    <source src="/images/Banner1.mp4" type="video/mp4" />
-  </video>
+        <source src="/images/Banner1.mp4" type="video/mp4" />
+      </video>
+
+      {/* Póster de respaldo si falla el <video> */}
+      <img
+        className="hero__poster"
+        src="/images/hero-poster.jpg"
+        alt=""
+        style={{ display: "none", position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+      />
 
       <div className="hero__overlay" />
       <div className="hero__brand">
+        <img src="/images/majorani-mark.svg" alt="Majorani" />
+        <p>Hardware de calidad para quad skate</p>
         <div className="hero__cta">
           <a
             href="#productos"

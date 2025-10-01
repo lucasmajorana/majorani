@@ -67,37 +67,39 @@ button:focus-visible {
   }
 }
 
-/* HERO — altura fija 397px full-bleed */
-.hero{
+/* === Hero: altura fija 397px y ancho completo === */
+:root{
+  /* ajusta si tu header cambia de alto */
+  --nav-h: 72px;
+  --hero-h: 397px;
+}
+
+.hero.hero--banner{
   position: relative;
-  height: 397px;                 /* <— altura fija */
-  width: 100vw;                  /* ocupa todo el ancho del viewport */
-  margin-left: calc(50% - 50vw); /* full-bleed: rompe el container */
-  margin-right: calc(50% - 50vw);
+  height: var(--hero-h) !important;   /* fuerza sobre reglas anteriores */
+  min-height: var(--hero-h) !important;
   overflow: hidden;
   scroll-margin-top: calc(var(--nav-h) + 12px);
 }
 
-/* el video siempre rellena el contenedor */
-.hero__video{
+.hero.hero--banner .hero__video{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;   /* llena el ancho sin deformar */
 }
 
-/* gradiente y marca, sin cambios grandes */
-.hero__overlay{
+.hero.hero--banner .hero__overlay{
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.85));
+  /* overlay más leve para que no se vea tan opaco */
+  background: linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.55));
 }
 
-.hero__brand{
+.hero.hero--banner .hero__brand{
   position: absolute;
-  left: 0; right: 0;
-  bottom: 24px;                  /* un poco de aire con altura baja */
+  inset: auto 0 12%;
   display: grid;
   place-items: center;
   gap: 12px;
@@ -105,5 +107,13 @@ button:focus-visible {
   text-align: center;
 }
 
-.hero__brand img{ width: min(220px, 48vw); }
-.hero__cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+.hero.hero--banner .hero__brand img{
+  width: min(220px, 48vw);
+}
+
+.hero.hero--banner .hero__cta{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
